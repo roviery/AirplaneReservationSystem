@@ -4,8 +4,6 @@
 
 using namespace std;
 
-int indexCreate = 0;
-
 struct seats{
     int fClassAvail;
     int fClassRes;
@@ -88,8 +86,7 @@ void create(ofstream &data, ofstream &flightcode){
     cout << "Number of Coach Seats (SOLD)\t\t: ";
     cin >> airline.planeSeats.coachSold;
     data << "Number of Coach Seats (SOLD)\t\t\t\t: " << airline.planeSeats.coachSold << endl;
-
-    indexCreate++;
+    
     cout << endl;
 }
 
@@ -98,11 +95,20 @@ void erase(ofstream &outfile, ofstream &flightfile, ifstream &inflight, ifstream
 
     // untuk menunjukkan Flight Code ke user
     string data;
-    cout << "LIST OF FLIGHT RECORDS" << endl;
-    cout << "========================================" << endl;
+    
+    int testEmpty = 0;
     while (!inflight.eof()){
         getline(inflight, data);
+        if (data == "" && testEmpty == 0){
+            cout << "There is no Flight Records" << endl;
+            return;
+        }
+        if (testEmpty == 0){
+            cout << "LIST OF FLIGHT RECORDS" << endl;
+            cout << "========================================" << endl;
+        }
         cout << data << endl;
+        testEmpty++;
     }
     
 
@@ -127,7 +133,6 @@ void erase(ofstream &outfile, ofstream &flightfile, ifstream &inflight, ifstream
     while(!inflight.eof()){
         string code;
         getline(inflight, code);
-        cout << code << endl;
         if (code == codeErase){
             // jika ada 2 flight code sama
             if (found == true){
@@ -202,17 +207,28 @@ void erase(ofstream &outfile, ofstream &flightfile, ifstream &inflight, ifstream
         k++;
     }
     infile.open("data.txt");
+
+    cout << endl;
+    cout << "Flight Records Deleted" << endl;
 }
 
 void update(ofstream &outfile, ofstream &flightfile, ifstream &inflight, ifstream &infile){
     cout << endl;
 
     string data;
-    cout << "LIST OF FLIGHT RECORDS" << endl;
-    cout << "========================================" << endl;
+    int testEmpty = 0;
     while (!inflight.eof()){
         getline(inflight, data);
+        if (data == "" && testEmpty == 0){
+            cout << "There is no Flight Records" << endl;
+            return;
+        }
+        if (testEmpty == 0){
+            cout << "LIST OF FLIGHT RECORDS" << endl;
+            cout << "========================================" << endl;
+        }
         cout << data << endl;
+        testEmpty++;
     }
 
     string codeUpdate;
@@ -349,12 +365,20 @@ void reservation(ofstream &outfile, ifstream &inflight, ifstream &infile){
 
     if (command == 1){
         cout << endl;
-        cout << "LIST OF FLIGHT RECORDS" << endl;
-        cout << "========================================" << endl;
         string data, codeReservation;
+        int testEmpty = 0;
         while (!inflight.eof()){
             getline(inflight, data);
+            if (data == "" && testEmpty == 0){
+                cout << "There is no Flight Records" << endl;
+                return;
+            }
+            if (testEmpty == 0){
+                cout << "LIST OF FLIGHT RECORDS" << endl;
+                cout << "========================================" << endl;
+            }
             cout << data << endl;
+            testEmpty++;
         }
         cout << "Enter The Flight Code\t: ";
         cin.get();
@@ -505,12 +529,20 @@ void reservation(ofstream &outfile, ifstream &inflight, ifstream &infile){
 
     else if (command == 2){
         cout << endl;
-        cout << "LIST OF FLIGHT RECORDS" << endl;
-        cout << "========================================" << endl;
         string data, codeReservation;
+        int testEmpty = 0;
         while (!inflight.eof()){
             getline(inflight, data);
+            if (data == "" && testEmpty == 0){
+                cout << "There is no Flight Records" << endl;
+                return;
+            }
+            if (testEmpty == 0){
+                cout << "LIST OF FLIGHT RECORDS" << endl;
+                cout << "========================================" << endl;
+            }
             cout << data << endl;
+            testEmpty++;
         }
         cout << "Enter The Flight Code\t: ";
         cin.get();
@@ -681,10 +713,6 @@ int main(){
     // Data Flight Code 
     ofstream flightfile;
     ifstream inflight;
-
-    // Data Seats
-    ofstream seatsfile;
-    ifstream inseats;
 
 
     outfile.open("data.txt", ios::app);
