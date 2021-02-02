@@ -1,0 +1,14 @@
+Flight Code									: CGK-GA1020
+City of Departure							: Jakarta
+Destination									: Bali
+Date of Departure							: 6 January 2021
+Time of Departure							: 01.00 PM
+Date of Arrival								: 6 January 2021
+Time of Arrival								: 02.30 PM
+Number of First-Class Seats (AVAILABLE)		: 15
+Number of First-Class Seats (RESERVATION)	: 5
+Number of First-Class Seats (SOLD)			: 5
+Number of Coach Seats (AVAILABLE)			: 20
+Number of Coach Seats (RESERVATION)			: 0
+Number of Coach Seats (SOLD)				: 0
+
